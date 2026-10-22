@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <!--Eingabesection-->
+
+  <h1>GGT-Berechnung im Browser</h1>
+
+ 
+
+  <label for="zahl1">Erste Zahl:</label>
+
+  <input type="number" id="zahl1" placeholder="z.B. 56">
+
+ 
+
+  <label for="zahl2">Zweite Zahl:</label>
+
+  <input type="number" id="zahl2" placeholder="z.B. 98">
+
+ 
+
+  <button onclick="zeigeGGT()">Berechne GGT</button>
+
+ 
+
+  <div id="ausgabe"></div>
+
+ 
+
+  <script>
+
+    // Funktion zur Berechnung des größten gemeinsamen Teilers (GGT) ohne Modulo-Operator
+
+    function berechneGGT(a, b) {
+
+      while (a !== b) {
+
+        if (a > b) {
+
+          a = a - b;
+
+        } else {
+
+          b = b - a;
+
+        }
+
+      }
+
+      return a;
+
+    }
+
+ 
+
+    function zeigeGGT() {
+
+      const z1 = parseInt(document.getElementById('zahl1').value);
+
+      const z2 = parseInt(document.getElementById('zahl2').value);
+
+ 
+
+      if (isNaN(z1) || isNaN(z2) || z1 <= 0 || z2 <= 0) {
+
+        document.getElementById('ausgabe').textContent =
+
+          'Bitte gib zwei positive Zahlen ein.';
+
+        return;
+
+      }
+
+ 
+
+      const ggt = berechneGGT(z1, z2);
+
+      document.getElementById('ausgabe').textContent =
+
+        `Der größte gemeinsame Teiler von ${z1} und ${z2} ist ${ggt}.`;
+
+      console.log(`Der größte gemeinsame Teiler von ${z1} und ${z2} ist ${ggt}`);
+
+    }
+
+  </script>
+
+</body>
+</html>
